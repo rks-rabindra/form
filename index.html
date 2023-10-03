@@ -1,206 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Missing Sales</title>
     <style>
-        body{
-    margin: 0;
-    padding: 0;
-    font-family: 'Times New Roman', Times, serif;
-    box-sizing: border-box;
-    background: rgb(247, 243, 243);
-}
-.container{
-    width: 300px;
-    height: 90vh;
-    background: white;
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    border-radius: 15px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-    cursor: pointer;
-    transition: 0.5s;
-    overflow: auto;
-}
-.container h1{
-    font-size: 18px;
-    text-align: center;
-    margin-top: 0;
-    color: rgb(77, 62, 243);
-}
-.elems{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: start;
-    margin-bottom: 20px;
-    margin-left: 5%;
-    font-size: 15px;
-}
-.elems label{
-    font-weight: 600;
-    margin-bottom: 5px;
-    color: rgb(145, 70, 17);
-    cursor: pointer;
-}
-.elems input,.elems select{
-    border: 0.5px solid rgb(49, 46, 46) ;
-    padding-top: 5px ;
-    padding-bottom: 5px ;
-    padding-left: 2px;
-    border-radius: 4px;
-    cursor: pointer;
-    outline: none;
-    width: 86%;
-}
-.button{
-    display: flex;
-    margin-bottom: 10px;
-}
-.button input {
-    background: rgb(3, 189, 3);
-    color: white;
-    border: none;
-    padding: 7px;
-    margin-left: 2.5%;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 100, 0, 1);
-    cursor: pointer;
-    transition: 0.5s;
-}
-.button input:hover{
-    background: green;
-    transform: translateY(-1.8px);
-    color: white;
-}
-.button .btnsecond , .button .btnfirst{
-    background: rgb(24, 201, 24);
-    width: 60px;
-}
-.button .btnsubmit{
-    width: 160px;
-    margin-right: 2.5%;
-}
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+            box-sizing: border-box;
+            background: rgb(247, 243, 243);
+        }
+
+        .container {
+            width: 350px;
+            height: 95vh;
+            background: white;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+            transition: 0.5s;
+            overflow: auto;
+        }
+
+        .container h1 {
+            font-size: 18px;
+            text-align: center;
+            margin-top: 0;
+            color: rgb(77, 62, 243);
+        }
+
+        .elems {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: start;
+            margin-bottom: 20px;
+            margin-left: 5%;
+            font-size: 15px;
+        }
+
+        .elems label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: rgb(145, 70, 17);
+            cursor: pointer;
+        }
+
+        .elems input,
+        .elems select {
+            border: 0.5px solid rgb(49, 46, 46);
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 2px;
+            border-radius: 4px;
+            cursor: pointer;
+            outline: none;
+            width: 90%;
+        }
+
+        .button {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .button input {
+            background: rgb(3, 189, 3);
+            color: white;
+            border: none;
+            padding: 7px;
+            margin-left: 2.5%;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 100, 0, 1);
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        .button input:hover {
+            background: green;
+            transform: translateY(-1.8px);
+            color: white;
+        }
+
+        .button .btnsecond,
+        .button .btnfirst {
+            background: rgb(24, 201, 24);
+            width: 60px;
+        }
+
+        .button .btnsubmit {
+            width: 180px;
+            margin-right: 2.5%;
+        }
 
 
-.elems_under{
-    display: flex;
-    flex-direction: row;
-}
-.elems_under .first{
-    width: 65%;
-}
-.elems_under .second{
-    width: 25%;
-    margin-left: 2px;
-}
-.header{
-    top: 0;
-    position: sticky;
-    background: white;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
-}
-#attended option {
-    margin-top: 5px;
-}
+        .elems_under {
+            display: flex;
+            flex-direction: row;
+        }
 
+        .elems_under .first {
+            width: 65%;
+        }
+
+        .elems_under .second {
+            width: 25%;
+            margin-left: 2px;
+        }
+
+        .header {
+            top: 0;
+            position: sticky;
+            background: white;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        #attended option {
+            margin-top: 5px;
+        }
     </style>
 
 </head>
+
 <body>
     <div class="container">
         <div class="header">
             <h1>Missing Sales</h1>
         </div>
-            <div class="content">
-                <div class="elems">
-                    <label for="Party_name">Party Name</label>
-                    <input type="text" id="Party_name" list="PartName_list"  placeholder="Enter Party Name" name="Party Name">
-                    <datalist id="PartName_list">
-                        <option value="Abc Company">
-                            <option value="XYZ pvt">
-                                <option value="MNC ltd">
-                    </datalist>
-                </div>
-                <div class="elems">
-                    <label for="attended">Attended By </label>
-                    <select name="attendedBy" id="attended">
-                        <option value="" disabled selected>Select Attendant</option>
-                        <option>Rabindra</option>
-                        <option>Gadigeppa</option>
-                        <option>Vikranth</option>
-                    </select>
-                </div>
-                <div class="elems">
-                    <label for="total_amt">Total Price</label>
-                    <input type="text" id="total_amt" placeholder="Please Enter Total Price" name="total_amt">
-                </div>
-                <div class="elems">
-                    <label for="reasons">Reason</label>
-                    <select name="reasons" id="reasons">
-                        <option value="" disabled selected>Select Reasons</option>
-                        <option>No Stock</option>
-                        <option>Price</option>
-                        <option>Instant Delivery</option>
-                    </select>
-                </div>
-                <div class="elems">
-                    <label for="remarks">Remarks</label>
-                    <input type="text" id="remarks" placeholder="Enter remarks if any" name="remarks">
-                </div>
-                <div class="elems">
-                    <label for="item1">Item Name : 1</label>
-                    <div class="elems_under">
-                        <input type="text" id="item1" placeholder="Item Name" class="first"> <input type="number" class="second" placeholder="qty">
-                    </div>
-                </div>
-                <p  hidden id="number" >1</p>
+        <div class="content">
+            <div class="elems">
+                <label for="Party_name">Party Name</label>
+                <input type="text" id="Party_name" list="PartName_list" placeholder="Enter Party Name"
+                    name="Party Name">
+                <datalist id="PartName_list">
+                    <option value="Abc Company">
+                    <option value="XYZ pvt">
+                    <option value="MNC ltd">
+                </datalist>
             </div>
+            <div class="elems">
+                <label for="attended">Attended By </label>
+                <select name="attendedBy" id="attended">
+                    <option value="" disabled selected>Select Attendant</option>
+                    <option>Rabindra</option>
+                    <option>Gadigeppa</option>
+                    <option>Vikranth</option>
+                </select>
+            </div>
+            <div class="elems">
+                <label for="total_amt">Total Price</label>
+                <input type="number" id="total_amt" placeholder="Please Enter Total Price" name="total_amt">
+            </div>
+            <div class="elems">
+                <label for="reasons">Reason</label>
+                <select name="reasons" id="reasons">
+                    <option value="" disabled selected>Select Reasons</option>
+                    <option>No Stock</option>
+                    <option>Price</option>
+                    <option>Instant Delivery</option>
+                </select>
+            </div>
+            <div class="elems">
+                <label for="remarks">Remarks</label>
+                <input type="text" id="remarks" placeholder="Enter remarks if any" name="remarks">
+            </div>
+            <div class="elems">
+                <label for="item1">Item Name : 1</label>
+                <div class="elems_under">
+                    <input type="text" id="item1" placeholder="Item Name" class="first"> <input type="number"
+                        class="second" placeholder="qty">
+                </div>
+            </div>
+            <p hidden id="number">1</p>
+        </div>
 
 
-         <div class="button">
-            <input type="submit" onclick="AddItem()"  name="Add Item" value="Add" class="btnfirst" >
-            <input type="submit"  onclick="RemoveItem()"  name="Remove Item" value="Remove" class="btnsecond" >
+        <div class="button">
+            <input type="submit" onclick="AddItem()" name="Add Item" value="Add" class="btnfirst">
+            <input type="submit" onclick="RemoveItem()" name="Remove Item" value="Remove" class="btnsecond">
             <input type="submit" class="btnsubmit">
-         </div>                  
+        </div>
     </div>
 
     <script>
-
-
-
-
-        function AddItem(){
+        function AddItem() {
             var number = document.getElementById('number');
             var no = + number.innerHTML;
-            var no = +no+1
+            var no = +no + 1
 
-            var innerline = '<label for="item'+no+'">Item Name : '+no+'</label> <div class="elems_under">  <input type="text" id="item'+no+'" placeholder="Item Name" class="first"> <input type="number" id="itemqty'+no+'" class="second" placeholder="qty"> </div>'
+            var innerline = '<label for="item' + no + '">Item Name : ' + no + '</label> <div class="elems_under">  <input type="text" id="item' + no + '" placeholder="Item Name" class="first"> <input type="number" id="itemqty' + no + '" class="second" placeholder="qty"> </div>'
             var divs = document.createElement('div')
-            divs.setAttribute('class','elems');
+            divs.setAttribute('class', 'elems');
             divs.innerHTML = innerline;
-            divs.setAttribute('id','itemtag'+no);
+            divs.setAttribute('id', 'itemtag' + no);
             document.getElementsByClassName('content')[0].appendChild(divs)
             number.innerHTML = no;
         }
-        function RemoveItem(){
+        function RemoveItem() {
             var number = document.getElementById('number');
             var no = + number.innerHTML;
-            var elem_remove = document.getElementById('itemtag'+no)
+            var elem_remove = document.getElementById('itemtag' + no)
             elem_remove.parentNode.removeChild(elem_remove)
-            var no = +no-1
+            var no = +no - 1
             number.innerHTML = no;
         }
     </script>
-
-    
-
-
-
-
 </body>
+
 </html>
